@@ -17,7 +17,8 @@ app.use(require("express-session")({
 app.use(passport.initialize());
 app.use(passport.session());
 
-passport.serializeUser()
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(__dirname + "/public"));
@@ -28,6 +29,12 @@ app.set("view engine", "ejs");
 app.get("/", function(req, res){
   res.render("landing");
 });
+app.get("/secret", function(req, res){
+  res.render(secret);
+})
+app.get("/register", function(req, res){
+  res.render("register");
+})
 app.get("/posts", function(req, res){
   res.render("index");
 });
