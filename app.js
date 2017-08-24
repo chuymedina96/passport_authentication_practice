@@ -34,7 +34,14 @@ app.get("/secret", function(req, res){
 app.get("/register", function(req, res){
   res.render("register");
 });
+app.get("/login", function(req, res){
+  res.render("login");
+})
 //POST Routes
+app.post("/login", function(req, res){
+  req.body.username
+  req.body.password
+});
 app.post("/register", function(req, res){
   req.body.username
   req.body.password
